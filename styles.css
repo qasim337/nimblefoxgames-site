@@ -28,22 +28,29 @@ header {
     margin-bottom: 3rem;
 }
 
-    /* Logo Styling */
-    header .logo {
-        max-width: 150px;
-        height: auto;
-        margin-bottom: 1rem;
-    }
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-    header h1 {
-        font-size: 2.5rem;
-        color: #FF8C42;
-    }
+header .logo {
+    max-width: 50px; /* Adjusted for a smaller logo */
+    height: auto;
+    margin-right: 1rem;
+}
 
-    header .tagline {
-        font-size: 1.2rem;
-        color: #666;
-    }
+header h1 {
+    font-size: 2.5rem;
+    color: #FF8C42;
+    margin: 0; /* Ensure no extra margin interferes with alignment */
+}
+
+header .tagline {
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
 
 /* Sections */
 section {
