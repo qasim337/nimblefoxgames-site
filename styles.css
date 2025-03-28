@@ -35,7 +35,7 @@ header {
 }
 
 header .logo {
-    max-width: 50px; /* Adjusted for a smaller logo */
+    max-width: 50px;
     height: auto;
     margin-right: 1rem;
 }
@@ -43,7 +43,7 @@ header .logo {
 header h1 {
     font-size: 2.5rem;
     color: #FF8C42;
-    margin: 0; /* Ensure no extra margin interferes with alignment */
+    margin: 0;
 }
 
 header .tagline {
@@ -84,6 +84,43 @@ h2 {
     font-size: 0.9rem;
     color: #666;
 }
+
+/* Team Section */
+.team {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.team-member {
+    width: 150px;
+}
+
+    .team-member img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 0.5rem;
+    }
+
+    .team-member h3 {
+        font-size: 1.1rem;
+        margin: 0.5rem 0 0.2rem;
+        color: #FF8C42;
+    }
+
+    .team-member p {
+        font-size: 0.9rem;
+        color: #666;
+        margin: 0;
+    }
 
 /* Contact */
 .contact-list {
