@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Nimble Fox is an indie game studio creating clever, immersive games for mobile and PC." />
     <title>Nimble Fox</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -14,190 +12,287 @@
     <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
-
-    <header>
-        <div class="container">
-            <div class="header-top">
-                <img src="assets/NimbleFoxGamesLogo.png" alt="Nimble Fox Games Logo" class="logo" />
-                <h1>Nimble Fox Games</h1>
-            </div>
-            <p class="tagline">Agile minds. Clever games.</p>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="assets/NimbleFoxGamesLogo.png" alt="NimbleFox" class="nav-logo" />
+            <span class="nav-title">NimbleFox</span>
         </div>
-    </header>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#games">Games</a>
+            <a href="#about">About</a>
+            <a href="#team">Team</a>
+            <a href="#contact">Contact</a>
+            <a href="#play" class="nav-cta">Play Now</a>
+        </div>
+    </nav>
 
     <main>
-
         <section class="hero">
-            <div class="hero-content">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6">
-                            <h1 class="hero-title">Create <span class="highlight">Experiences</span> That Engage Players</h1>
-                            <p class="hero-subtitle">Building innovative games that spark curiosity and challenge the mind</p>
-                            <div class="hero-cta">
-                                <a href="#games" class="btn btn-primary">See Our Games</a>
-                                <a href="#contact" class="btn btn-outline">Contact Us</a>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 text-center">
-                            <img src="assets/NimbleFoxGamesLogo.png" alt="Nimble Fox Hero" class="hero-image">
-                        </div>
-                    </div>
+            <div class="hero-left">
+                <!-- <div class="company-logo">
+                    <img src="assets/NimbleFoxGamesLogo.png" alt="NimbleFox" class="logo-small" />
+                    <span class="company-name">NimbleFox</span>
+                </div> -->
+                <h1 class="hero-title">
+                    Crafting<br/>
+                    <span class="gradient-text">Extraordinary</span><br/>
+                    Gaming Experiences
+                </h1>
+                <p class="hero-description">
+                    Where imagination meets pixel-perfect execution. NimbleFox Studio creates
+                    immersive worlds and unforgettable adventures.
+                </p>
+                <div class="hero-cta">
+                    <a href="#games" class="btn btn-gradient">Our Games</a>
+                    <a href="#about" class="btn btn-outline">About Us</a>
                 </div>
             </div>
-            <div class="hero-stats">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="stat-item">
-                                <h3>2+</h3>
-                                <p>Games Released</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="stat-item">
-                                <h3>7+</h3>
-                                <p>Team Members</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="stat-item">
-                                <h3>100%</h3>
-                                <p>Player Satisfaction</p>
-                            </div>
-                        </div>
-                    </div>
+            <!-- <div class="hero-right">
+                <div class="gradient-squares">
+                    <div class="square sAbout Usquare-1"></div>
+                    <div class="square square-2"></div>
+                    <div class="square square-3"></div>
+                    <img src="assets/NimbleFoxGamesLogo.png" alt="NimbleFox" class="hero-logo" />
                 </div>
+            </div> -->
+            <div class="floating-stars">
+                <div class="star star-1"></div>
+                <div class="star star-2"></div>
+                <div class="star star-3 star-sm"></div>
+                <div class="star star-4 star-lg"></div>
             </div>
         </section>
 
         <section class="about" id="about">
             <div class="section-content fade-up">
-                <h2>About Us</h2>
-                <p>
-                    Born from years of game development experience, our team believes in agility, creativity, and delivering polished gameplay experiences across mobile and PC platforms.
-                </p>
-                <p>
-                    At Nimble Fox, we craft games that challenge the mind, spark curiosity, and bring joy to players of all kinds. Whether you're managing your own simulation empire or solving clever puzzles, our games are designed to be thoughtful, playful, and endlessly engaging.
-                </p>
+                <div class="section-header">
+                    <h2>About <span class="gradient-text">Us</span></h2>
+                </div>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p class="lead">
+                            Born from years of game development experience, our team believes in agility, creativity, and delivering polished gameplay experiences across mobile and PC platforms.
+                        </p>
+                        <p>
+                            At Nimble Fox, we craft games that challenge the mind, spark curiosity, and bring joy to players of all kinds. Whether you're managing your own simulation empire or solving clever puzzles, our games are designed to be thoughtful, playful, and endlessly engaging.
+                        </p>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <span class="stat-number gradient-text">2+</span>
+                            <span class="stat-label">Games Released</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number gradient-text">7+</span>
+                            <span class="stat-label">Team Members</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number gradient-text">100%</span>
+                            <span class="stat-label">Player Satisfaction</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="floating-stars">
+                <div class="star star-lg"></div>
+                <div class="star star-xs"></div>
+                <div class="star"></div>
+                <div class="star star-sm"></div>
+                <div class="star star-xs"></div>
             </div>
         </section>
 
         <section class="games" id="games">
             <div class="section-content fade-up">
-                <h2>Our Games</h2>
+                <div class="section-header">
+                    <h2>Our <span class="gradient-text">Games</span></h2>
+                </div>
                 <div class="game-blocks-container">
-                    <div class="game-block">
-                        <h3>Heaven or Hell</h3>
-                        <p>
-                            Judge all souls correctly by analyzing the clues and deciding their fate: Heaven for the virtuous and Hell for the sinful. A morally challenging decision-based game now available on Android.
-                        </p>
-                        <span class="platforms">Platform: Android</span>
+                    <div class="game-card">
+                        <div class="game-image">
+                            <div class="gradient-overlay"></div>
+                            <img src="assets/games/heaven-or-hell.jpg" alt="Heaven or Hell">
+                        </div>
+                        <div class="game-content">
+                            <h3>Heaven or Hell</h3>
+                            <p>
+                                Judge all souls correctly by analyzing the clues and deciding their fate: Heaven for the virtuous and Hell for the sinful. A morally challenging decision-based game now available on Android.
+                            </p>
+                            <div class="game-meta">
+                                <span class="platform">
+                                    <i class="platform-icon">📱</i>
+                                    Android
+                                </span>
+                                <a href="#play" class="btn btn-gradient btn-sm">Play Now</a>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="game-block">
-                        <h3>Mirror World</h3>
-                        <p>
-                            A visually stunning 2D puzzle platformer where you control Elya, a girl caught between two shattered realities. Switch seamlessly between the radiant Auroria and the shadowy Noctis to solve puzzles, unlock abilities, and uncover the story of a universe in desperate need of repair.
-                        </p>
-                        <span class="platforms">Platform: PC</span>
+                    <div class="game-card">
+                        <div class="game-image">
+                            <div class="gradient-overlay"></div>
+                            <img src="assets/games/mirror-world.jpg" alt="Mirror World">
+                        </div>
+                        <div class="game-content">
+                            <h3>Mirror World</h3>
+                            <p>
+                                A visually stunning 2D puzzle platformer where you control Elya, a girl caught between two shattered realities. Switch seamlessly between the radiant Auroria and the shadowy Noctis to solve puzzles.
+                            </p>
+                            <div class="game-meta">
+                                <span class="platform">
+                                    <i class="platform-icon">💻</i>
+                                    PC
+                                </span>
+                                <a href="#play" class="btn btn-gradient btn-sm">Coming Soon</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="floating-stars">
+                <div class="star star-xs"></div>
+                <div class="star star-lg"></div>
+                <div class="star"></div>
+                <div class="star star-xs"></div>
+                <div class="star star-sm"></div>
             </div>
         </section>
 
         <section class="team" id="team">
             <div class="section-content fade-up">
-                <h2>Our Team</h2>
+                <div class="section-header">
+                    <h2>Our <span class="gradient-text">Team</span></h2>
+                </div>
                 <div class="team-container">
                     <div class="team-member">
                         <div class="member-card">
-                            <img src="assets/team/Qasim.JPG" alt="Qasim - Founder &amp; Developer">
+                            <div class="member-image">
+                                <img src="assets/team/Qasim.jpeg" alt="Qasim - Founder & Developer">
+                                <div class="gradient-overlay"></div>
+                            </div>
                             <div class="member-info">
                                 <h3>Qasim</h3>
-                                <p class="role">Founder &amp; Developer</p>
-                                <p class="quote">"Code is poetry in motion, and games are the ultimate canvas."</p>
+                                <p class="role">Founder & Developer</p>
                             </div>
                         </div>
                     </div>
                     <div class="team-member">
                         <div class="member-card">
-                            <img src="assets/team/Suleman.png" alt="Suleman - Gameplay Engineer">
+                            <div class="member-image">
+                                <img src="assets/team/Suleman.png" alt="Suleman - Gameplay Engineer">
+                                <div class="gradient-overlay"></div>
+                            </div>
                             <div class="member-info">
                                 <h3>Suleman</h3>
                                 <p class="role">Gameplay Engineer</p>
-                                <p class="quote">"The best games are the ones that feel intuitive yet surprising."</p>
                             </div>
                         </div>
                     </div>
                     <div class="team-member">
                         <div class="member-card">
-                            <img src="assets/team/Hassan.png" alt="Hassan - Gameplay Engineer">
+                            <div class="member-image">
+                                <img src="assets/team/Hassan.png" alt="Hassan - Gameplay Engineer">
+                                <div class="gradient-overlay"></div>
+                            </div>
                             <div class="member-info">
                                 <h3>Hassan</h3>
                                 <p class="role">Gameplay Engineer</p>
-                                <p class="quote">"Breaking the game is part of making the game unbreakable."</p>
                             </div>
                         </div>
                     </div>
                     <div class="team-member">
                         <div class="member-card">
-                            <img src="assets/team/Adam.png" alt="Adam - Gameplay Engineer">
+                            <div class="member-image">
+                                <img src="assets/team/Adam.png" alt="Adam - Gameplay Engineer">
+                                <div class="gradient-overlay"></div>
+                            </div>
                             <div class="member-info">
                                 <h3>Adam</h3>
                                 <p class="role">Gameplay Engineer</p>
-                                <p class="quote">"Games are puzzles that solve the player as much as the player solves them."</p>
                             </div>
                         </div>
                     </div>
                     <div class="team-member">
                         <div class="member-card">
-                            <img src="assets/team/Aiyan.png" alt="Aiyan - Design Lead &amp; Project Coordinator">
+                            <div class="member-image">
+                                <img src="assets/team/Aiyan.png" alt="Aiyan - Design Lead & Project Coordinator">
+                                <div class="gradient-overlay"></div>
+                            </div>
                             <div class="member-info">
                                 <h3>Aiyan</h3>
                                 <p class="role">Game Designer</p>
-                                <p class="quote">"Design is not just what it looks like, but how it makes you feel."</p>
                             </div>
                         </div>
                     </div>
                     <div class="team-member">
                         <div class="member-card">
-                            <img src="assets/team/Ahmad.png" alt="Ahmad - Visual Designer">
+                            <div class="member-image">
+                                <img src="assets/team/Ahmad.png" alt="Ahmad - Visual Designer">
+                                <div class="gradient-overlay"></div>
+                            </div>
                             <div class="member-info">
                                 <h3>Ahmad</h3>
                                 <p class="role">Visual Designer</p>
-                                <p class="quote">"Art in games gives soul to mechanics and life to pixels."</p>
                             </div>
                         </div>
                     </div>
                     <div class="team-member">
                         <div class="member-card">
-                            <img src="assets/team/Mahnoor.png" alt="Mahnoor - Quality Champion">
+                            <div class="member-image">
+                                <img src="assets/team/Mahnoor.png" alt="Mahnoor - Quality Champion">
+                                <div class="gradient-overlay"></div>
+                            </div>
                             <div class="member-info">
                                 <h3>Mahnoor</h3>
                                 <p class="role">Quality Champion</p>
-                                <p class="quote">"Finding bugs is an art form; fixing them is a science."</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="floating-stars">
+                <div class="star"></div>
+                <div class="star star-lg"></div>
+                <div class="star star-xs"></div>
+                <div class="star star-sm"></div>
+                <div class="star star-xs"></div>
+            </div>
         </section>
 
         <section class="contact" id="contact">
             <div class="section-content fade-up">
-                <h2>Get in Touch</h2>
-                <p>We'd love to hear from you! Whether you're a player, collaborator, or just curious, feel free to reach out.</p>
-
-                <ul class="contact-list">
-                    <li>Email: <a href="mailto:hello@nimblefox.games">hello@nimblefox.games</a></li>
-                    <li class="social-links">
-                        Follow us:
-                        <a href="#">Twitter</a> ·
-                        <a href="#">Instagram</a> ·
-                        <a href="#">Discord</a>
-                    </li>
-                </ul>
+                <div class="section-header">
+                    <h2>Get in <span class="gradient-text">Touch</span></h2>
+                </div>
+                <div class="contact-container">
+                    <p class="contact-lead">
+                        We'd love to hear from you! Whether you're a player, collaborator, or just curious, feel free to reach out.
+                    </p>
+                    <div class="contact-cards">
+                        <div class="contact-card">
+                            <div class="card-icon">✉️</div>
+                            <h3>Email Us</h3>
+                            <a href="mailto:hello@nimblefox.games" class="gradient-link">hello@nimblefox.games</a>
+                        </div>
+                        <div class="contact-card">
+                            <div class="card-icon">🤝</div>
+                            <h3>Follow Us</h3>
+                            <div class="social-links">
+                                <a href="#" class="gradient-link">Twitter</a>
+                                <a href="#" class="gradient-link">Instagram</a>
+                                <a href="#" class="gradient-link">Discord</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="floating-stars">
+                <div class="star star-lg"></div>
+                <div class="star star-xs"></div>
+                <div class="star"></div>
+                <div class="star star-sm"></div>
+                <div class="star star-xs"></div>
             </div>
         </section>
 
@@ -210,9 +305,6 @@
         </div>
     </footer>
 
-    <!-- Bootstrap JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    
     <!-- Add smooth scrolling behavior -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
