@@ -22,8 +22,8 @@
             <a href="#games">Games</a>
             <a href="#about">About</a>
             <a href="#team">Team</a>
-            <a href="#contact">Contact</a>
-            <a href="#play" class="nav-cta">Play Now</a>
+            <!-- <a href="#contact">Contact</a> -->
+            <a href="#contact" class="nav-cta">Contact Us</a>
         </div>
     </nav>
 
@@ -65,45 +65,78 @@
                 <div class="section-header">
                     <h2>Our <span class="gradient-text">Games</span></h2>
                 </div>
-                <div class="game-blocks-container">
-                    <div class="game-card">
-                        <div class="game-image">
-                            <div class="gradient-overlay"></div>
-                            <img src="assets/games/heaven-or-hell.jpg" alt="Heaven or Hell">
+                <div class="game-carousel">
+                    <div class="carousel-container">
+                        <div class="game-card">
+                            <div class="game-image">
+                                <div class="gradient-overlay"></div>
+                                <img src="assets/games/heaven-or-hell.jpg" alt="Heaven or Hell">
+                            </div>
+                            <div class="game-content">
+                                <h3>Heaven or Hell</h3>
+                                <p>
+                                    Judge all souls correctly by analyzing the clues and deciding their fate: Heaven for the virtuous and Hell for the sinful. A morally challenging decision-based game now available on Android.
+                                </p>
+                                <div class="game-meta">
+                                    <span class="platform">
+                                        <i class="platform-icon">📱</i>
+                                        Android
+                                    </span>
+                                    <a href="#play" class="btn btn-gradient btn-sm">Play Now</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="game-content">
-                            <h3>Heaven or Hell</h3>
-                            <p>
-                                Judge all souls correctly by analyzing the clues and deciding their fate: Heaven for the virtuous and Hell for the sinful. A morally challenging decision-based game now available on Android.
-                            </p>
-                            <div class="game-meta">
-                                <span class="platform">
-                                    <i class="platform-icon">📱</i>
-                                    Android
-                                </span>
-                                <a href="#play" class="btn btn-gradient btn-sm">Play Now</a>
+
+                        <div class="game-card">
+                            <div class="game-image">
+                                <div class="gradient-overlay"></div>
+                                <img src="assets/games/mirror-world.jpg" alt="Mirror World">
+                            </div>
+                            <div class="game-content">
+                                <h3>Mirror World</h3>
+                                <p>
+                                    A visually stunning 2D puzzle platformer where you control Elya, a girl caught between two shattered realities. Switch seamlessly between the radiant Auroria and the shadowy Noctis to solve puzzles.
+                                </p>
+                                <div class="game-meta">
+                                    <span class="platform">
+                                        <i class="platform-icon">💻</i>
+                                        PC
+                                    </span>
+                                    <span class="btn btn-disabled btn-sm">Coming Soon</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="game-card">
+                            <div class="game-image">
+                                <div class="gradient-overlay"></div>
+                                <img src="assets/games/heaven-or-hell.jpg" alt="Fox Adventure">
+                            </div>
+                            <div class="game-content">
+                                <h3>Fox Adventure</h3>
+                                <p>
+                                    Join our nimble fox on an epic adventure through enchanted forests and mysterious caves. Collect magical artifacts and unlock special abilities in this charming platformer.
+                                </p>
+                                <div class="game-meta">
+                                    <span class="platform">
+                                        <i class="platform-icon">📱</i>
+                                        iOS & Android
+                                    </span>
+                                    <span class="btn btn-disabled btn-sm">Coming Soon</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="game-card">
-                        <div class="game-image">
-                            <div class="gradient-overlay"></div>
-                            <img src="assets/games/mirror-world.jpg" alt="Mirror World">
-                        </div>
-                        <div class="game-content">
-                            <h3>Mirror World</h3>
-                            <p>
-                                A visually stunning 2D puzzle platformer where you control Elya, a girl caught between two shattered realities. Switch seamlessly between the radiant Auroria and the shadowy Noctis to solve puzzles.
-                            </p>
-                            <div class="game-meta">
-                                <span class="platform">
-                                    <i class="platform-icon">💻</i>
-                                    PC
-                                </span>
-                                <a href="#play" class="btn btn-gradient btn-sm">Coming Soon</a>
-                            </div>
-                        </div>
+                    
+                    <div class="carousel-nav">
+                        <button class="carousel-btn prev-btn">&lsaquo;</button>
+                        <button class="carousel-btn next-btn">&rsaquo;</button>
+                    </div>
+                    
+                    <div class="carousel-indicator">
+                        <div class="indicator-dot active"></div>
+                        <div class="indicator-dot"></div>
+                        <div class="indicator-dot"></div>
                     </div>
                 </div>
             </div>
@@ -350,6 +383,124 @@
             
             sections.forEach(section => {
                 observer.observe(section);
+            });
+            
+            // Carousel functionality
+            const carousel = document.querySelector('.carousel-container');
+            const cards = carousel.querySelectorAll('.game-card');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            const dots = document.querySelectorAll('.indicator-dot');
+            
+            let currentIndex = 0;
+            let totalCards = cards.length;
+            let autoScrollInterval;
+            
+            // Clone first and last cards for infinite scroll
+            const firstCardClone = cards[0].cloneNode(true);
+            const lastCardClone = cards[totalCards - 1].cloneNode(true);
+            
+            carousel.appendChild(firstCardClone);
+            carousel.insertBefore(lastCardClone, cards[0]);
+            
+            // Adjust positions after cloning
+            carousel.scrollLeft = carousel.offsetWidth;
+            
+            // Initialize
+            updateIndicators();
+            startAutoScroll();
+            
+            // Previous button
+            prevBtn.addEventListener('click', () => {
+                stopAutoScroll();
+                navigateCarousel('prev');
+                startAutoScroll();
+            });
+            
+            // Next button
+            nextBtn.addEventListener('click', () => {
+                stopAutoScroll();
+                navigateCarousel('next');
+                startAutoScroll();
+            });
+            
+            // Indicator dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    stopAutoScroll();
+                    currentIndex = index;
+                    scrollToIndex(currentIndex);
+                    startAutoScroll();
+                });
+            });
+            
+            // Navigation function
+            function navigateCarousel(direction) {
+                if (direction === 'prev') {
+                    currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+                } else {
+                    currentIndex = (currentIndex + 1) % totalCards;
+                }
+                scrollToIndex(currentIndex);
+            }
+            
+            // Scroll to specific index
+            function scrollToIndex(index) {
+                // Add 1 because we have a clone at the beginning
+                let scrollPos = (index + 1) * carousel.offsetWidth;
+                carousel.scrollTo({
+                    left: scrollPos,
+                    behavior: 'smooth'
+                });
+                updateIndicators();
+            }
+            
+            // Update indicator dots
+            function updateIndicators() {
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+            
+            // Start auto scroll
+            function startAutoScroll() {
+                autoScrollInterval = setInterval(() => {
+                    navigateCarousel('next');
+                }, 5000);
+            }
+            
+            // Stop auto scroll
+            function stopAutoScroll() {
+                clearInterval(autoScrollInterval);
+            }
+            
+            // Pause auto scroll when user interacts with carousel
+            carousel.addEventListener('mouseenter', stopAutoScroll);
+            carousel.addEventListener('mouseleave', startAutoScroll);
+            carousel.addEventListener('touchstart', stopAutoScroll);
+            carousel.addEventListener('touchend', startAutoScroll);
+            
+            // Handle infinite scroll transition
+            carousel.addEventListener('transitionend', () => {
+                // If we're at the cloned first item (position totalCards + 1)
+                if (currentIndex === totalCards - 1 && carousel.scrollLeft > (totalCards * carousel.offsetWidth)) {
+                    carousel.scrollTo({
+                        left: carousel.offsetWidth,
+                        behavior: 'auto'
+                    });
+                    currentIndex = 0;
+                }
+                
+                // If we're at the cloned last item (position 0)
+                if (currentIndex === 0 && carousel.scrollLeft < carousel.offsetWidth) {
+                    carousel.scrollTo({
+                        left: totalCards * carousel.offsetWidth,
+                        behavior: 'auto'
+                    });
+                    currentIndex = totalCards - 1;
+                }
+                
+                updateIndicators();
             });
         });
     </script>
