@@ -161,15 +161,6 @@ header .tagline {
     width: auto;
 }
 
-.hero-logo {
-    /* width: 120px; */
-    height: 10rem;
-    width: auto;
-    /* top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
-}
-
 .nav-title {
     font-size: 1.5rem;
     font-weight: 600;
@@ -335,7 +326,7 @@ header .tagline {
 .hero-logo {
     position: absolute;
     width: auto;
-    height: 30rem;
+    height: 20rem;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
