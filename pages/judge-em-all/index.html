@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Judge 'Em All - A morally challenging decision-based game by Nimble Fox" />
+    <title>Judge 'Em All - Nimble Fox</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <style>
+        .video-container {
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            width: 100%;
+            max-width: none;
+        }
+        
+        .video-container iframe, .video-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            object-fit: cover;
+        }
+        
+        .game-description {
+            margin: 0 0 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .back-link {
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        
+        .back-link a {
+            color: #9ca3af;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+        
+        .back-link a:hover {
+            color: #ffffff;
+        }
+        
+        .game-showcase {
+            display: grid;
+            grid-template-columns: 40% 60%;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .game-info-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 2rem;
+        }
+        
+        .game-media-col {
+            position: relative;
+            min-height: 400px;
+            overflow: hidden;
+        }
+        
+        .game-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+        
+        .game-feature {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 3.5rem;
+            height: 3.5rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            padding: 0.5rem;
+        }
+        
+        .game-feature h3 {
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+        }
+        
+        .game-feature p {
+            color: #9ca3af;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .download-button-container {
+            margin-top: 3rem !important;
+        }
+        
+        @media (max-width: 768px) {
+            .game-showcase {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .game-media-col {
+                order: -1; /* Video first on mobile */
+                margin-bottom: 0;
+                height: auto;
+                min-height: auto;
+                position: relative;
+            }
+            
+            .game-features {
+                grid-template-columns: 1fr;
+                margin-top: 1rem;
+                gap: 0.75rem;
+            }
+            
+            .video-container {
+                margin-bottom: 0;
+            }
+            
+            .game-info-col {
+                padding-top: 0;
+            }
+            
+            section.games {
+                padding: 1rem 0 0.5rem;
+            }
+            
+            .section-content {
+                margin-bottom: 0;
+                padding: 4rem 1rem;
+                /* padding-top: 4rem; */
+            }
+            
+            .back-link {
+                margin-bottom: 0.75rem;
+            }
+            
+            .section-header {
+                margin-bottom: 1rem;
+            }
+            
+            .video-wrapper, .circle-container {
+                display: none; /* Hide these on mobile as they're not being used */
+            }
+            
+            .floating-stars {
+                display: none; /* Hide stars on mobile to reduce space */
+            }
+            
+            footer {
+                margin-top: 0;
+                padding: 1rem 0;
+            }
+            
+            .hero-cta {
+                margin-top: 1rem !important;
+                margin-bottom: 0 !important;
+            }
+            
+            .download-button-container {
+                margin: 1rem auto 0 !important;
+            }
+        }
+
+        @media (max-width: 430px) {
+            .section-content {
+                padding-top: 2rem;
+            }
+        }
+        
+        .video-wrapper {
+            position: absolute;
+            right: 0;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; /* Align to the right edge */
+            overflow: hidden;
+        }
+        
+        .circle-container {
+            position: relative;
+            width: 80%;
+            max-width: 80vh;
+            margin: 0;
+            margin-right: -33%; /* Push 1/3 of the circle off-screen to the right */
+        }
+        
+        .story-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, rgba(247, 247, 250, 0.5) 0%, rgba(250, 251, 255, 0.5) 100%);
+        }
+        
+        .story-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .story-media-flex {
+            display: flex;
+            width: 100%;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            align-items: flex-start;
+        }
+        
+        .story-video {
+            flex: 1;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            width: 100%;
+        }
+        
+        .story-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .story-text {
+            flex: 1;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .story-text h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .story-content {
+            text-align: left;
+            max-width: 800px;
+        }
+        
+        .story-content p {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            color: #4B5563;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.3), transparent);
+            width: 100%;
+            max-width: 500px;
+            margin: 2rem auto 4rem;
+        }
+        
+        @media (max-width: 992px) {
+            .story-media-flex {
+                flex-direction: column;
+            }
+            
+            .story-video {
+                margin-bottom: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .story-section {
+                padding: 3rem 0;
+            }
+            
+            .story-text {
+                padding: 1.5rem;
+            }
+            
+            .story-text h3 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .story-content p {
+                font-size: 1rem;
+                text-align: left;
+            }
+            
+            .poster-container::after {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .poster-container::before {
+                border-top: 10px solid transparent;
+                border-bottom: 10px solid transparent;
+                border-left: 18px solid white;
+            }
+        }
+        
+        .poster-container {
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .poster-container:hover {
+            transform: scale(1.02);
+        }
+        
+        .poster-container::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(139, 92, 246, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+        
+        .poster-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-40%, -50%);
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-left: 25px solid white;
+            z-index: 3;
+            transition: all 0.3s ease;
+        }
+        
+        .poster-container:hover::after {
+            background: rgba(236, 72, 153, 0.8);
+            width: 90px;
+            height: 90px;
+        }
+        
+        .hero-poster {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 50%; 
+            margin-bottom: 3rem;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+        
+        .hero-poster img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .full-width-container {
+            width: 100%;
+            max-width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .game-info-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .game-showcase {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        
+        .game-info-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            text-align: center;
+        }
+        
+        .game-description {
+            margin: 0 auto 2.5rem;
+            line-height: 1.6;
+            max-width: 800px;
+        }
+        
+        .game-features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        @media (max-width: 992px) {
+            .game-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-poster {
+                padding-bottom: 60%; /* Taller aspect ratio on mobile */
+            }
+            
+            .game-features {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .game-info-container {
+                padding: 1.5rem;
+            }
+        }
+        
+        .full-width-video {
+            width: 100%;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            margin-bottom: 3rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+        
+        .full-width-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .floating-cta {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 100;
+            border-radius: 4rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transform: translateY(0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        .floating-cta.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .floating-cta .btn {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            white-space: nowrap;
+            border-radius: 4rem;
+        }
+        
+        .floating-cta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(139, 92, 246, 0.4);
+            animation: none;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(139, 92, 246, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(139, 92, 246, 0);
+            }
+        }
+        
+        /* Mobile adjustments for floating CTA */
+        @media (max-width: 768px) {
+            /* .floating-cta {
+                bottom: 1rem;
+                right: 1rem;
+                left: 1rem;
+                display: flex;
+                justify-content: center;
+            } */
+            
+            .floating-cta .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="../../assets/logo-horizontal-full.png" alt="NimbleFox" class="nav-logo" />
+        </div>
+        <div class="nav-links">
+            <a href="../../index.html#home">Home</a>
+            <a href="../../index.html#games">Games</a>
+            <a href="../../index.html#about">About</a>
+            <a href="../../index.html#team">Team</a>
+            <a href="../../index.html#contact" class="nav-cta">Contact Us</a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="judge-em-all" class="games">
+            <div class="full-width-container">
+                <div class="hero-poster">
+                    <img src="../../assets/games/judge-em-all/cover.png" alt="Judge 'Em All - Angel and Devil characters deciding the fate of souls" />
+                </div>
+            </div>
+            
+            <div class="section-content fade-up">
+                <div class="game-info-container">
+                    
+                    <div class="section-header">
+                        <h2>Gameplay <span class="gradient-text">Overview</span></h2>
+                    </div>
+
+                    <div class="full-width-video">
+                        <iframe 
+                            src="https://www.youtube.com/embed/1Gx9FNPT7pw" 
+                            title="Judge 'Em All Gameplay" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    
+                    <div class="game-showcase">
+                        <div class="game-info-col">
+                            <!-- <p class="lead game-description">
+                                Judge 'Em All: Logic Puzzle challenges your reasoning and observation as an angel tasked with uncovering guilt or innocence. Solve unique logic puzzles, analyze clues, and reveal hidden truths in thrilling, twist-filled scenarios.
+                            </p> -->
+                            
+                            <div class="game-features">
+                                <div class="game-feature">
+                                    <div class="feature-icon">🧠</div>
+                                    <h3>Moral Dilemmas</h3>
+                                    <p>Face challenging decisions with no clear right answers</p>
+                                </div>
+                                <div class="game-feature">
+                                    <div class="feature-icon">🔍</div>
+                                    <h3>Detective Work</h3>
+                                    <p>Analyze clues to determine each soul's true nature</p>
+                                </div>
+                                <div class="game-feature">
+                                    <div class="feature-icon">⚖️</div>
+                                    <h3>Decide Fate</h3>
+                                    <p>Your decisions shape each character's afterlife destiny</p>
+                                </div>
+                                <div class="game-feature">
+                                    <div class="feature-icon">🏆</div>
+                                    <h3>Earn Rewards</h3>
+                                    <p>Unlock new levels and challenges as you progress</p>
+                                </div>
+                            </div>
+                            
+                            <div class="download-button-container" style="display: flex; justify-content: center; margin: 3rem auto 0;">
+                                <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                                    <a href="./privacy-policy.html" class="btn" style="background: transparent; color: #8B5CF6;">
+                                        Privacy Policy
+                                    </a>
+                                    <a href="https://play.google.com/store/apps/details?id=com.nimblefoxgames.heavenorhell" class="btn btn-gradient" target="_blank" rel="noopener noreferrer">
+                                        Download Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="floating-stars">
+                <div class="star star-lg"></div>
+                <div class="star star-xs"></div>
+                <div class="star"></div>
+                <div class="star star-sm"></div>
+                <div class="star star-xs"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="floating-cta">
+        <a href="https://play.google.com/store/apps/details?id=com.nimblefoxgames.heavenorhell" class="btn btn-gradient" target="_blank" rel="noopener noreferrer">
+            Download on Google Play
+        </a>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Nimble Fox. All rights reserved.</p>
+            <p><a href="https://nimblefox.games">www.nimblefox.games</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add animation to sections when scrolling
+            const sections = document.querySelectorAll('section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.querySelector('.section-content')?.classList.add('fade-up');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            // Hide floating CTA when scrolled to bottom
+            const floatingCta = document.querySelector('.floating-cta');
+            const footer = document.querySelector('.btn-gradient');
+            
+            const footerObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        floatingCta.classList.add('hidden');
+                    } else {
+                        floatingCta.classList.remove('hidden');
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            if (footer && floatingCta) {
+                footerObserver.observe(footer);
+            }
+        });
+    </script>
+</body>
+</html> 
