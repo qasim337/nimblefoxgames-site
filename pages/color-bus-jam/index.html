@@ -6,10 +6,10 @@
     <meta name="description" content="Color Bus Jam - A puzzle game by Nimble Fox" />
     <title>Color Bus Jam - Nimble Fox</title>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon-16x16.png">
+    <link rel="manifest" href="../../site.webmanifest">
     <style>
         .video-container {
             border-radius: 1rem;
@@ -483,6 +483,65 @@
             border: none;
         }
         
+        .video-placeholder {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            background: #000;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .video-placeholder:hover {
+            transform: scale(1.02);
+        }
+        
+        .video-placeholder img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            transition: background 0.3s ease;
+        }
+        
+        .video-placeholder:hover .play-overlay {
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .play-button {
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .video-placeholder:hover .play-button {
+            transform: scale(1.1);
+        }
+        
+        .play-overlay p {
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
         .floating-cta {
             position: fixed;
             bottom: 2rem;
@@ -573,12 +632,18 @@
                     </div>
 
                     <div class="full-width-video">
-                        <iframe 
-                            src="https://www.youtube.com/embed/Cms1L41S4wk" 
-                            title="Color Bus Jam Gameplay" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+                        <div class="video-placeholder">
+                            <img src="../../assets/games/color-bus-jam/cover.png" alt="Color Bus Jam Gameplay Preview" />
+                            <div class="play-overlay">
+                                <div class="play-button">
+                                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                                        <circle cx="40" cy="40" r="40" fill="rgba(255, 255, 255, 0.5)"/>
+                                        <polygon points="32,25 32,55 58,40" fill="#8B5CF6"/>
+                                    </svg>
+                                </div>
+                                <p>Click to view gameplay video</p>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="game-showcase">
@@ -681,6 +746,15 @@
             
             if (footer && floatingCta) {
                 footerObserver.observe(footer);
+            }
+            
+            // Video placeholder click handler
+            const videoPlaceholder = document.querySelector('.video-placeholder');
+            if (videoPlaceholder) {
+                videoPlaceholder.addEventListener('click', function() {
+                    // Open Color Bus Jam gameplay video in new tab
+                    window.open('https://www.youtube.com/watch?v=Cms1L41S4wk', '_blank');
+                });
             }
         });
     </script>
