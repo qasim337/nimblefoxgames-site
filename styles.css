@@ -1217,7 +1217,8 @@ footer a {
 
 .game-image {
     position: relative;
-    height: 250px;
+    width: 100%;
+    aspect-ratio: 1024 / 500;
     overflow: hidden;
 }
 
